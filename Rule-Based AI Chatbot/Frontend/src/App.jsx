@@ -247,7 +247,9 @@ export default function DecodeLabsChat() {
     if (!value || loading) return;
 
     setMessages((prev) => [
-      ...prev,
+      ...prev.map((m) =>
+        m.role === "bot" ? { ...m, options: [], canGoBack: false } : m
+      ),
       { id: crypto.randomUUID(), role: "user", message: displayLabel ?? value },
     ]);
     setInputValue("");
@@ -444,7 +446,7 @@ export default function DecodeLabsChat() {
             <input
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Type a number, or 'menu'…"
+              placeholder="Type a number, 'back', or 'menu'…"
               className="flex-1 font-mono text-sm bg-slate-900 border border-slate-700 rounded-full px-4 py-2 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-sky-400/50"
             />
             <button
