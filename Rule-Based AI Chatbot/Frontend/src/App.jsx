@@ -43,6 +43,7 @@ const FONT_STYLES = `
 `;
 
 const TARGET_TITLE = "DECODE LABS";
+const APP_ICON_SRC = "/decodelabs-icon.png";
 
 function useTypewriter(text, speed = 90, startDelay = 250) {
   const [display, setDisplay] = useState("");
@@ -316,6 +317,7 @@ export default function DecodeLabsChat() {
       <div className="w-screen h-screen h-[100dvh] flex items-center justify-center bg-black font-body text-slate-400">
         <style>{FONT_STYLES}</style>
         <div className="flex flex-col items-center gap-5 text-center rise-in">
+          <img src={APP_ICON_SRC} alt="Decode Labs icon" className="h-12 w-12 object-contain" />
           <p className="italic">Decode Labs Assistant Closed</p>
           <button
             onClick={() => setAppClosed(false)}
@@ -341,16 +343,23 @@ export default function DecodeLabsChat() {
       <div className={`${showIntro ? "" : "chat-slide-in"} w-full h-full min-h-0 flex flex-col overflow-hidden bg-slate-950`}>
         {/* Header */}
         <div className="flex items-center justify-between px-5 sm:px-8 py-4 border-b border-slate-800 bg-black/70 backdrop-blur">
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="font-display font-bold text-lg sm:text-xl tracking-tight text-slate-100">
-                DECODE LABS
-              </h1>
-              <HorizontalCursor className="w-5" />
+          <div className="flex items-center gap-3">
+            <img
+              src={APP_ICON_SRC}
+              alt="Decode Labs icon"
+              className="h-9 w-9 shrink-0 object-contain"
+            />
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="font-display font-bold text-lg sm:text-xl tracking-tight text-slate-100">
+                  DECODE LABS
+                </h1>
+                <HorizontalCursor className="w-5" />
+              </div>
+              <p className="mt-0.5 text-[11px] sm:text-xs italic text-slate-500">
+                Your 24-hour Assistant
+              </p>
             </div>
-            <p className="mt-0.5 text-[11px] sm:text-xs italic text-slate-500">
-              Your 24-hour Assistant
-            </p>
           </div>
           <button
             onClick={handleCloseWindow}
