@@ -317,15 +317,15 @@ export default function DecodeLabsChat() {
       <div className="w-screen h-screen h-[100dvh] flex items-center justify-center bg-black font-body text-slate-400">
         <style>{FONT_STYLES}</style>
         <div className="flex flex-col items-center gap-5 text-center rise-in">
-          <img src={APP_ICON_SRC} alt="Decode Labs icon" className="h-12 w-12 object-contain" />
-          <p className="italic">Decode Labs Assistant Closed</p>
+          <img src={APP_ICON_SRC} alt="Decode Labs icon" className="h-14 w-14 object-contain" />
+          <p className="text-xl sm:text-2xl italic">Decode Labs Assistant Closed</p>
           <button
             onClick={() => setAppClosed(false)}
-            className="flex h-14 w-14 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-sky-400 shadow-xl shadow-black/30 transition-colors hover:border-sky-400/70 hover:bg-black hover:text-sky-300"
+            className="flex h-16 w-16 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-sky-400 shadow-xl shadow-black/30 transition-colors hover:border-sky-400/70 hover:bg-black hover:text-sky-300"
             aria-label="Reopen Decode Labs Assistant"
             title="Reopen chat"
           >
-            <MessageCircle size={26} />
+            <MessageCircle size={30} />
           </button>
         </div>
       </div>
@@ -347,27 +347,27 @@ export default function DecodeLabsChat() {
             <img
               src={APP_ICON_SRC}
               alt="Decode Labs icon"
-              className="h-9 w-9 shrink-0 object-contain"
+              className="h-11 w-11 shrink-0 object-contain"
             />
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="font-display font-bold text-lg sm:text-xl tracking-tight text-slate-100">
+                <h1 className="font-display font-bold text-xl sm:text-2xl tracking-tight text-slate-100">
                   DECODE LABS
                 </h1>
                 <HorizontalCursor className="w-5" />
               </div>
-              <p className="mt-0.5 text-[11px] sm:text-xs italic text-slate-500">
+              <p className="mt-0.5 text-sm sm:text-base italic text-slate-500">
                 Your 24-hour Assistant
               </p>
             </div>
           </div>
           <button
             onClick={handleCloseWindow}
-            className="p-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-slate-800 transition-colors"
+            className="p-3 rounded-lg text-slate-400 hover:text-red-400 hover:bg-slate-800 transition-colors"
             aria-label="Close window"
             title="Close window"
           >
-            <X size={20} />
+            <X size={24} />
           </button>
         </div>
 
@@ -376,27 +376,27 @@ export default function DecodeLabsChat() {
           {messages.map((m) =>
             m.role === "user" ? (
               <div key={m.id} className="flex justify-end rise-in">
-                <div className="max-w-[80%] sm:max-w-[65%] bg-blue-500 text-slate-950 rounded-2xl rounded-tr-sm px-4 py-2 text-sm font-medium">
+                <div className="max-w-[86%] sm:max-w-[68%] bg-blue-500 text-slate-950 rounded-2xl rounded-tr-sm px-5 py-3 text-base sm:text-lg font-medium">
                   {m.message}
                 </div>
               </div>
             ) : (
               <div key={m.id} className="flex justify-start rise-in">
                 <div
-                  className={`max-w-[88%] sm:max-w-[70%] lg:max-w-[58%] rounded-2xl rounded-tl-sm border px-4 py-3 ${
+                  className={`max-w-[92%] sm:max-w-[76%] lg:max-w-[64%] rounded-2xl rounded-tl-sm border px-5 py-4 ${
                     m.isError
                       ? "bg-red-950/40 border-red-900 text-red-200"
                       : "bg-slate-800/70 border-slate-700 text-slate-100"
                   }`}
                 >
                   {cleanBotTitle(m.title) && (
-                    <div className="font-display font-bold text-[13px] text-sky-400 mb-1">
+                    <div className="font-display font-bold text-base sm:text-lg text-sky-400 mb-2">
                       {cleanBotTitle(m.title)}
                     </div>
                   )}
-                  {m.intro && <div className="text-sm text-slate-300 mb-1">{m.intro}</div>}
+                  {m.intro && <div className="text-base sm:text-lg text-slate-300 mb-2">{m.intro}</div>}
                   {m.message && (
-                    <div className="text-sm leading-relaxed">{linkify(m.message)}</div>
+                    <div className="text-base sm:text-lg leading-relaxed">{linkify(m.message)}</div>
                   )}
 
                   {m.options && m.options.length > 0 && (
@@ -406,12 +406,12 @@ export default function DecodeLabsChat() {
                           key={opt.key}
                           onClick={() => handleOptionClick(opt)}
                           disabled={loading}
-                          className="group flex w-full items-center gap-3 text-left text-sm bg-slate-900 hover:bg-black border border-slate-700 hover:border-blue-400/60 rounded-lg px-3 py-2.5 transition-colors disabled:opacity-50"
+                          className="group flex w-full items-center gap-3 text-left text-base sm:text-lg bg-slate-900 hover:bg-black border border-slate-700 hover:border-blue-400/60 rounded-xl px-4 py-3.5 transition-colors disabled:opacity-50"
                         >
-                          <span className="flex h-6 min-w-6 items-center justify-center rounded-full border border-slate-700 font-mono text-xs text-blue-400 group-hover:text-blue-300">
+                          <span className="flex h-8 min-w-8 items-center justify-center rounded-full border border-slate-700 font-mono text-sm sm:text-base text-blue-400 group-hover:text-blue-300">
                             {opt.key}
                           </span>
-                          <span className="text-slate-200">{opt.label}</span>
+                          <span className="text-slate-200 leading-snug">{opt.label}</span>
                         </button>
                       ))}
                     </div>
@@ -421,9 +421,9 @@ export default function DecodeLabsChat() {
                     <button
                       onClick={handleBack}
                       disabled={loading}
-                      className="mt-3 flex items-center gap-1 font-mono text-[11px] text-slate-500 hover:text-blue-400 transition-colors disabled:opacity-50"
+                      className="mt-4 flex items-center gap-1.5 font-mono text-sm sm:text-base text-slate-500 hover:text-blue-400 transition-colors disabled:opacity-50"
                     >
-                      <ArrowLeft size={12} /> back
+                      <ArrowLeft size={16} /> back
                     </button>
                   )}
                 </div>
@@ -446,25 +446,25 @@ export default function DecodeLabsChat() {
               type="button"
               onClick={handleRestart}
               disabled={loading}
-              className="p-2 rounded-lg text-slate-400 hover:text-blue-400 hover:bg-slate-800 transition-colors disabled:opacity-50"
+              className="p-3 rounded-lg text-slate-400 hover:text-blue-400 hover:bg-slate-800 transition-colors disabled:opacity-50"
               aria-label="Restart"
               title="Back to main menu"
             >
-              <RotateCcw size={16} />
+              <RotateCcw size={20} />
             </button>
             <input
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Type a number, 'back', or 'menu'…"
-              className="flex-1 font-mono text-sm bg-slate-900 border border-slate-700 rounded-full px-4 py-2 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-sky-400/50"
+              className="flex-1 font-mono text-base sm:text-lg bg-slate-900 border border-slate-700 rounded-full px-5 py-3 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-sky-400/50"
             />
             <button
               type="submit"
               disabled={loading || !inputValue.trim()}
-              className="p-2 rounded-full bg-sky-500 text-slate-950 hover:bg-sky-400 transition-colors disabled:opacity-40"
+              className="p-3 rounded-full bg-sky-500 text-slate-950 hover:bg-sky-400 transition-colors disabled:opacity-40"
               aria-label="Send"
             >
-              <Send size={16} />
+              <Send size={20} />
             </button>
           </form>
         </div>
