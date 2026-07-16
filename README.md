@@ -1,6 +1,6 @@
-# Decode Labs Internship Project
+# Rule-Based AI Chatbot
 
-This repository contains a rule-based AI chatbot project for Decode Labs. The project is split into two main parts:
+This repository contains a rule-based AI chatbot project which is part of the Decode Labs Internship program. The project is split into two main parts:
 
 - A FastAPI backend that serves chatbot logic and conversation state.
 - A React + Vite frontend that provides a modern chat-style user interface.
